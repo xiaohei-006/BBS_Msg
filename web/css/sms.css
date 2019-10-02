@@ -1,0 +1,68 @@
+﻿body { margin:0; padding:0; font-size:12px; background:#fff url(../images/sms_bg.png) repeat-x; }
+p,ul,li,dl,dt,dd,form,input { margin:0; padding:0; }
+.bold { font-weight:bold; }
+.wrap { margin:0px auto; }
+ul { list-style:none; }
+a:link, a:visited { color:#000; text-decoration:none; }
+a:hover, a:active { color:#000; text-decoration:underline; }
+.clear { clear:both; height:0; overflow:hidden; }
+
+/* clearFix */
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{display:inline-block}
+.clearfix{display:block}
+
+#loginTitle { background:url(../images/sms_login_title.png) center bottom no-repeat; height:100px; }
+#regTitle { background:url(../images/sms_reg_title.png) center bottom no-repeat; height:100px; }
+#loginForm { height:306px; background:url(../images/sms_login_bg.png) center top no-repeat; }
+#loginForm dl { margin:100px auto auto auto; width:200px; }
+#loginForm dl dt { width:60px; }
+#regForm { height:306px; background:url(../images/sms_reg_bg.png) center top no-repeat; }
+#regForm dl { margin:40px auto auto auto; width:215px; }
+#regForm dl dt { width:75px; }
+.userForm { margin:20px auto; }
+.userForm dl { font-size:14px; line-height:46px; }
+.userForm dl dt { clear:left; float:left; }
+.userForm dl dd { float:left; }
+.userForm dl input { background:url(../images/sms_input_bg.gif) no-repeat; width:130px; height:22px; border:none; font-size:16px; margin:5px 0px; padding:5px; }
+.userForm .buttons { clear:both; padding-top:20px; text-align:center; }
+.userForm .buttons input { margin:0px 15px; width:87px; height:39px; border:none; cursor:pointer; }
+.userForm .buttons .btn-login { background:url(../images/sms_btn_login.png); }
+.userForm .buttons .btn-reg { background:url(../images/sms_btn_reg.png); }
+.userForm .buttons .btn-reset { background:url(../images/sms_btn_reset.png); }
+.userForm .goback { padding-top:40px; }
+.userForm .goback a { display:block; background:url(../images/sms_btn_goback.png); width:61px; height:19px; text-indent:-1000em; margin:0px auto; overflow:hidden; }
+
+#main { height:100%; background:url(../images/sms_home_bg.png) center top; padding-top:70px; padding-bottom:60px; }
+#main .mainbox { width:850px; margin:0px auto; font-size:14px; }
+#main .title { height:34px; }
+#main .myMessage { background:url(../images/sms_my_message.png) no-repeat; }
+#main .readMessage { background:url(../images/sms_read_message.png) no-repeat; }
+#main .sendMessage { background:url(../images/sms_send_message.png) no-repeat; }
+#main .menu { margin:20px auto; text-align:right; }
+#main .menu span { margin-left:10px; }
+#main .menu span a { font-weight:bold; }
+#main .content { width:780px; padding:20px 0; margin:0px auto; }
+#main .messageList ul li { line-height:45px; padding-left:50px; border-bottom:1px dashed #fff; background:url(../images/sms_readed.png) 5px center no-repeat; }
+#main .messageList ul li.unReaded { background:url(../images/sms_unReaded.png) 5px center no-repeat; }
+#main .messageList ul li em { float:right; font-style:normal; margin:0px 5px; }
+#main .messageList ul li p { display:inline; }
+#main .page-spliter { background:url(../images/sms_page_bg.png) center top no-repeat; line-height:21px; margin:30px auto; text-align:center; }
+#main .page-spliter a { margin:0px 5px; }
+#main .page-spliter span.current { font-weight:bold; text-decoration:underline; }
+#main .message { line-height:30px; background:url(../images/sms_read_bg.png) repeat-x; }
+#main .message .tmenu { border-top:1px solid #fff; border-bottom:1px solid #fff; }
+#main .message .tmenu ul li { float:left; margin:0px 5px; }
+#keyWord { background:url(../images/sms_keyword_bg.png); width:114px; height:16px; border:none; font-size:14px; padding:3px 5px; margin:3px 0; }
+#keybox { position:relative; }
+#keybox ul { position:absolute; left:0px; *left:5px; top:25px; width:122px; border:1px solid #5b7eb4; background:#fff; padding:4px 0; margin:0; display:none; filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity:0.8; opacity:0.8; }
+#keybox ul li { display:block; width:112px; _width:102px; font-size:12px; line-height:20px; margin:0; text-align:left; }
+#keybox ul li a { padding:2px 4px; display:block; }
+#keybox ul li a:hover { background:#E7E7E7; text-decoration:none; }
+#main .message .view { clear:both; padding:20px; height:400px; overflow-y:auto; }
+#main .message .view p { text-indent:2em; }
+#main .message .view textarea { width:600px; height:200px; border:1px solid #5b7fb4; overflow:hidden; background:transparent; margin-left:55px; }
+#main .message .view .send { padding:20px; text-align:center; }
+#main .message .view .send input { background:url(../images/sms_send.gif); width:120px; height:30px; border:none; }
+
+
