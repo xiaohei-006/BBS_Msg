@@ -1,6 +1,6 @@
 package com.bdqn.bbs.service.impl;
 
-import com.bdqn.bbs.service.UserService;
+import com.bdqn.bbs.service.IMsgService;
 
 /**
  * @author: 赖榕
@@ -10,5 +10,5 @@ import com.bdqn.bbs.service.UserService;
  * @since: JDK1.8
  * @packageName: com.bdqn.bbs.service.impl
  */
-public class UserServiceImpl implements UserService {
+public class IMsgServiceImpl implements IMsgService {
 }

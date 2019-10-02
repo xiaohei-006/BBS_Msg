@@ -1,7 +1,5 @@
 package com.bdqn.bbs.domain;
 
-import java.awt.print.PrinterAbortException;
-
 /**
  * @author: 赖榕
  * @date: 2019/9/29
@@ -12,34 +10,17 @@ import java.awt.print.PrinterAbortException;
  */
 public class User {
 
-    private int msgId ; // 消息Id
     private String username; // 用户名
-    private String title; // 标题
-    private String msgcontent; // 消息内容
-    private String state; // 状态：未读、已读
-    private  String sendto; // 收件人
-    private String msg_create_date; // 创建时间
+    private String password; // 密码
+    private String email; // 邮箱
 
-
-    public User(int msgId, String username, String title, String msgcontent, String state, String sendto, String msg_create_date) {
-        this.msgId = msgId;
+    public User(String username, String password, String email) {
         this.username = username;
-        this.title = title;
-        this.msgcontent = msgcontent;
-        this.state = state;
-        this.sendto = sendto;
-        this.msg_create_date = msg_create_date;
+        this.password = password;
+        this.email = email;
     }
 
     public User() {
-    }
-
-    public int getMsgId() {
-        return msgId;
-    }
-
-    public void setMsgId(int msgId) {
-        this.msgId = msgId;
     }
 
     public String getUsername() {
@@ -50,56 +31,28 @@ public class User {
         this.username = username;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPassword() {
+        return password;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getMsgcontent() {
-        return msgcontent;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMsgcontent(String msgcontent) {
-        this.msgcontent = msgcontent;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getSendto() {
-        return sendto;
-    }
-
-    public void setSendto(String sendto) {
-        this.sendto = sendto;
-    }
-
-    public String getMsg_create_date() {
-        return msg_create_date;
-    }
-
-    public void setMsg_create_date(String msg_create_date) {
-        this.msg_create_date = msg_create_date;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "msgId=" + msgId +
-                ", username='" + username + '\'' +
-                ", title='" + title + '\'' +
-                ", msgcontent='" + msgcontent + '\'' +
-                ", state='" + state + '\'' +
-                ", sendto='" + sendto + '\'' +
-                ", msg_create_date='" + msg_create_date + '\'' +
+        return "Msg{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

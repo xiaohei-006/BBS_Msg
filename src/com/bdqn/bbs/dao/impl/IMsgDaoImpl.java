@@ -1,7 +1,7 @@
 package com.bdqn.bbs.dao.impl;
 
 import com.bdqn.bbs.dao.BaseDao;
-import com.bdqn.bbs.dao.UserDao;
+import com.bdqn.bbs.dao.IMsgDao;
 
 /**
  * @author: 赖榕
@@ -11,5 +11,5 @@ import com.bdqn.bbs.dao.UserDao;
  * @since: JDK1.8
  * @packageName: com.bdqn.bbs.dao.impl
  */
-public class UserDaoImpl extends BaseDao implements UserDao {
+public class IMsgDaoImpl extends BaseDao implements IMsgDao {
 }

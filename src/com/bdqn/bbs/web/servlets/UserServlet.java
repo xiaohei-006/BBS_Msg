@@ -1,8 +1,9 @@
 package com.bdqn.bbs.web.servlets;
 
 import com.bdqn.bbs.domain.Msg;
-import com.bdqn.bbs.service.MsgService;
-import com.bdqn.bbs.service.impl.MsgServiceImpl;
+import com.bdqn.bbs.domain.User;
+import com.bdqn.bbs.service.IUserService;
+import com.bdqn.bbs.service.impl.IUserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @author: 赖榕
@@ -23,7 +23,7 @@ import java.util.List;
 public class UserServlet extends HttpServlet {
 
 
-    private MsgService service=new MsgServiceImpl();
+    private IUserService service=new IUserServiceImpl();
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,18 +59,18 @@ public class UserServlet extends HttpServlet {
     private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        Msg msg=new Msg();
-        msg.setUsername(username);
-        msg.setPassword(password);
-        Msg loginMsg= null;
+        User user=new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        User loginUser= null;
         try {
-            loginMsg = service.login(username,password);
+            loginUser = service.login(username,password);
         } catch (Exception e) {
             request.getSession().setAttribute("error",e.getMessage());
             response.sendRedirect("index.jsp");
             return;
         }
-        request.getSession().setAttribute("loginuser",loginMsg);
+        request.getSession().setAttribute("loginuser",loginUser);
         response.sendRedirect("main.jsp");
 
     }

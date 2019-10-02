@@ -1,10 +1,10 @@
 package com.bdqn.bbs.service.impl;
 
-import com.bdqn.bbs.dao.MsgDao;
-import com.bdqn.bbs.dao.impl.MsgDaoImpl;
+import com.bdqn.bbs.dao.IUserDao;
+import com.bdqn.bbs.dao.impl.IUserDaoImpl;
 import com.bdqn.bbs.domain.Msg;
 import com.bdqn.bbs.domain.User;
-import com.bdqn.bbs.service.MsgService;
+import com.bdqn.bbs.service.IUserService;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import java.util.List;
  * @since: JDK1.8
  * @packageName: com.bdqn.bbs.service.impl
  */
-public class MsgServiceImpl implements MsgService {
+public class IUserServiceImpl implements IUserService {
 
-    private MsgDao dao = new MsgDaoImpl();
+    private IUserDao dao = new IUserDaoImpl();
 
     /**
      * 用户登录
@@ -28,20 +28,20 @@ public class MsgServiceImpl implements MsgService {
      * @return
      */
     @Override
-    public Msg login(String username, String password) throws Exception {
-        Msg msg = dao.findByUserNameAndPassword(username, password);
-        if (msg == null) {
+    public User login(String username, String password) throws Exception {
+        User user = dao.findByUserNameAndPassword(username, password);
+        if (user == null) {
             throw new Exception("用户名或密码错误");
         }
-        return msg;
+        return user;
     }
 
     @Override
     public void register(String username, String password, String email) throws Exception {
-        List<Msg> list = null;
+        List<User> list = null;
         list = dao.findByUserName(username);
         if (list==null || list.size() == 0) {
-            dao.register(new Msg(username, password, email));
+            dao.register(new User(username, password, email));
         } else {
             throw new Exception("用户名已经被注册");
         }

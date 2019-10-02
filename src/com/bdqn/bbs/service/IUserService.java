@@ -1,6 +1,7 @@
 package com.bdqn.bbs.service;
 
 import com.bdqn.bbs.domain.Msg;
+import com.bdqn.bbs.domain.User;
 
 /**
  * @author: 赖榕
@@ -10,7 +11,7 @@ import com.bdqn.bbs.domain.Msg;
  * @since: JDK1.8
  * @packageName: com.bdqn.bbs.service
  */
-public interface MsgService {
+public interface IUserService {
 
     /**
      * 登录后台
@@ -18,7 +19,7 @@ public interface MsgService {
      * @param password 密码
      * @return 返回登录用户信息，若登录失败返回null值
      */
-    Msg login(String username, String password) throws Exception;
+    User login(String username, String password) throws Exception;
 
     void register(String username, String password, String email) throws Exception;
 }

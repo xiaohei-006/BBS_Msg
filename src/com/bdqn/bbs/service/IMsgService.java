@@ -1,4 +1,4 @@
-package com.bdqn.bbs.dao;
+package com.bdqn.bbs.service;
 
 /**
  * @author: 赖榕
@@ -6,7 +6,7 @@ package com.bdqn.bbs.dao;
  * @description:
  * @version: 1.0
  * @since: JDK1.8
- * @packageName: com.bdqn.bbs.dao
+ * @packageName: com.bdqn.bbs.service
  */
-public interface UserDao {
+public interface IMsgService {
 }
