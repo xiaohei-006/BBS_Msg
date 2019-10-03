@@ -40,11 +40,22 @@ public class IUserServiceImpl implements IUserService {
     public void register(String username, String password, String email) throws Exception {
         List<User> list = null;
         list = dao.findByUserName(username);
-        if (list==null || list.size() == 0) {
+        if (list == null || list.size() == 0) {
             dao.register(new User(username, password, email));
         } else {
             throw new Exception("用户名已经被注册");
         }
 
     }
+
+    @Override
+    public List<User> findUsers() throws Exception {
+        List<User> users = dao.findAll();
+        if (users == null || users.size() == 0) {
+            throw new Exception("未查找到用户");
+        }
+        return users;
+    }
+
+
 }

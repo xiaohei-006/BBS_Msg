@@ -20,4 +20,13 @@
         <servlet-name>user</servlet-name>
         <url-pattern>/userServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>msgServlet</servlet-name>
+        <servlet-class>com.bdqn.bbs.web.servlets.MsgServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>msgServlet</servlet-name>
+        <url-pattern>/msgServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

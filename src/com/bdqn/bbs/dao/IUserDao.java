@@ -29,4 +29,12 @@ public interface IUserDao {
      * @param user
      */
     void register(User user) throws Exception;
+
+    /**
+     * 查找所用的用户信息
+     * @return
+     */
+    List<User> findAll();
+
+
 }

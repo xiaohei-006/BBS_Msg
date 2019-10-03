@@ -2,6 +2,7 @@ package com.bdqn.bbs.dao.impl;
 
 import com.bdqn.bbs.dao.BaseDao;
 import com.bdqn.bbs.dao.IUserDao;
+import com.bdqn.bbs.domain.Msg;
 import com.bdqn.bbs.domain.User;
 
 import java.sql.ResultSet;
@@ -57,6 +58,24 @@ public class IUserDaoImpl extends BaseDao implements IUserDao {
             e.printStackTrace();
         }
         return user;
+    }
+
+
+    @Override
+    public List<User> findAll() {
+        String sql="select * from msg_userinfo";
+        List<User> users=new ArrayList<User>();
+        try {
+            ResultSet resultSet = super.query(sql);
+            while (resultSet.next()){
+                User user = this.getInfo(resultSet);
+                users.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return users;
     }
 
     private User getInfo(ResultSet resultSet) throws SQLException {
