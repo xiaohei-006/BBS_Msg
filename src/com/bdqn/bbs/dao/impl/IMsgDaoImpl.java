@@ -5,6 +5,7 @@ import com.bdqn.bbs.dao.IMsgDao;
 import com.bdqn.bbs.domain.Msg;
 import com.sun.corba.se.spi.transport.ReadTimeouts;
 
+import javax.rmi.CORBA.Tie;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -25,7 +26,7 @@ public class IMsgDaoImpl extends BaseDao implements IMsgDao {
         String sql = "select * from msg where sendto  = ?";
         List<Msg> msgs = new ArrayList<Msg>();
         try {
-            ResultSet resultSet = super.query(sql, username);
+            ResultSet resultSet = super.query(sql, new Object[]{username});
             while (resultSet.next()) {
                 msgs.add(this.getInfo(resultSet));
             }
@@ -37,8 +38,8 @@ public class IMsgDaoImpl extends BaseDao implements IMsgDao {
 
     @Override
     public Msg readMsg(String msgid) throws Exception {
-        String sql="select * from msg where msgId = ?";
-        ResultSet resultSet = super.query(sql, msgid);
+        String sql = "select * from msg where msgId = ?";
+        ResultSet resultSet = super.query(sql, new Object[]{msgid});
         if (resultSet.next()) {
             return this.getInfo(resultSet);
         }
@@ -48,19 +49,48 @@ public class IMsgDaoImpl extends BaseDao implements IMsgDao {
     @Override
     public void updateStateByMsgId(String msgid) throws Exception {
         String sql = "update msg set state='1' where msgId = ?";
-        super.update(sql, msgid);
+        super.update(sql, new Object[]{msgid});
     }
 
     @Override
     public void delMsgByMsgId(String msgId) throws Exception {
         String sql = "delete from msg where msgId =?";
-        super.update(sql, msgId);
+        super.update(sql, new Object[]{msgId});
+    }
+
+    @Override
+    public List<Msg> findMsgByCondition(String title, String msgcontent, String startDate, String endDate) throws Exception {
+        ResultSet resultSet = null;
+        List<String> strings = new ArrayList<>();
+        List<Msg> msgs = new ArrayList<>();
+        String sql = "select * from msg where 1 = 1 ";
+        if (null != title && !"".equals(title)) {
+            sql += " and title like ?";
+            title = "%" + title + "%";
+            strings.add(title);
+        }
+        if (null != msgcontent && !"".equals(msgcontent)) {
+            sql += " and msgcontent like ?";
+            msgcontent = '%' + msgcontent + "%";
+            strings.add(msgcontent);
+        }
+        if (null != startDate && null != endDate && !"".equals(startDate) && !"".equals(endDate)) {
+            sql += " and msg_create_date between ? and ?";
+            strings.add(startDate);
+            strings.add(endDate);
+        }
+        resultSet = super.query(sql, strings.toArray());
+        while (resultSet.next()) {
+            Msg msg = this.getInfo(resultSet);
+            msgs.add(msg);
+        }
+        return msgs;
     }
 
     @Override
     public void send(Msg msg) throws Exception {
         String sql = "insert into msg values(default,?,?,?,?,?,?)";
-        super.update(sql, msg.getUsername(), msg.getTitle(), msg.getMsgcontent(), msg.getState(), msg.getSendto(), msg.getMsg_create_date());
+        super.update(sql, new Object[]{msg.getUsername(), msg.getTitle(), msg.getMsgcontent(), msg.getState(), msg.getSendto(), msg.getMsg_create_date()});
     }
 
     private Msg getInfo(ResultSet rs) throws SQLException {

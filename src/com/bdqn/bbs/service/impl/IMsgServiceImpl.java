@@ -5,6 +5,7 @@ import com.bdqn.bbs.dao.impl.IMsgDaoImpl;
 import com.bdqn.bbs.domain.Msg;
 import com.bdqn.bbs.domain.User;
 import com.bdqn.bbs.service.IMsgService;
+import com.bdqn.bbs.web.servlets.MsgServlet;
 import com.sun.org.apache.regexp.internal.REUtil;
 
 import java.util.List;
@@ -62,6 +63,19 @@ public class IMsgServiceImpl implements IMsgService {
         }
         if (msgs==null || msgs.size()==0){
             throw new Exception("未获取到信息");
+        }
+        return msgs;
+    }
+
+    public List<Msg> findMsg(String title,String msgcontent,String startDate,String endDate) throws Exception {
+        List<Msg> msgs = null;
+        try {
+            msgs = dao.findMsgByCondition(title, msgcontent, startDate, endDate);
+        } catch (Exception e) {
+            throw e;
+        }
+        if (msgs==null || msgs.size()==0){
+            throw new Exception("没有查找到数据");
         }
         return msgs;
     }

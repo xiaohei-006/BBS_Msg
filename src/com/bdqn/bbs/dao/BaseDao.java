@@ -8,6 +8,7 @@ package com.bdqn.bbs.dao;
  * @since: JDK1.8
  * @packageName: dao
  */
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.Properties;
 public class BaseDao {
 
     protected static Connection connection;
+
     static {
         Properties properties = new Properties();
         InputStream inputStream = BaseDao.class.getClassLoader().getResourceAsStream("conf\\database.properties");
@@ -33,14 +35,17 @@ public class BaseDao {
 
     /**
      * 填充预编译对象的占位符
-     * @param ps 预编译对象
+     *
+     * @param ps   预编译对象
      * @param args 占位符参数
      */
-    protected void full(PreparedStatement ps,Object...args) throws Exception {
-
+    protected void full(PreparedStatement ps, Object[] args) throws Exception {
+        if (args == null) {
+            return;
+        }
         for (int i = 0; i < args.length; i++) {
             try {
-                ps.setObject(i+1,args[i]);
+                ps.setObject(i + 1, args[i]);
             } catch (SQLException e) {
                 throw new Exception("填充预编译对象出错");
             }
@@ -48,20 +53,20 @@ public class BaseDao {
 
     }
 
-    protected ResultSet query(String sql,Object...args) throws Exception {
+    protected ResultSet query(String sql, Object[] args) throws Exception {
         PreparedStatement ps = connection.prepareStatement(sql);
-        this.full(ps,args);
+        this.full(ps, args);
         ResultSet resultSet = ps.executeQuery();
         return resultSet;
     }
 
-    protected void update(String sql,Object...args) throws Exception {
+    protected void update(String sql, Object[] args) throws Exception {
         PreparedStatement ps = connection.prepareStatement(sql);
-        this.full(ps,args);
+        this.full(ps, args);
         ps.executeUpdate();
     }
 
-    public static void close(PreparedStatement ps,ResultSet rs){
+    public static void close(PreparedStatement ps, ResultSet rs) {
         if (ps != null) {
             try {
                 ps.close();
@@ -78,7 +83,7 @@ public class BaseDao {
         }
     }
 
-    public static void closeConnection(){
+    public static void closeConnection() {
         if (connection != null) {
             try {
                 connection.close();

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BBS_Meg.iml" filepath="$PROJECT_DIR$/BBS_Meg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BBS_Msg.iml" filepath="$PROJECT_DIR$/BBS_Msg.iml" />
     </modules>
   </component>
 </project>

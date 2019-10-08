@@ -25,4 +25,14 @@ public interface IMsgService {
      * @return 返回该条消息的对象
      */
     Msg readMsg(String msgid) throws Exception;
+
+    /**
+     *
+     * @param title 标题
+     * @param msgcontent 内容
+     * @param startDate 创建时间
+     * @param endDate 创建时间
+     * @return
+     */
+    List<Msg> findMsg(String title,String msgcontent,String startDate,String endDate) throws Exception;
 }

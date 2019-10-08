@@ -28,7 +28,7 @@ public class IUserDaoImpl extends BaseDao implements IUserDao {
     @Override
     public void register(User user) throws Exception {
         String sql="insert into msg_userinfo(username,password,email) values(?,?,?)";
-        super.update(sql,user.getUsername(),user.getPassword(),user.getEmail());
+        super.update(sql,new Object[]{user.getUsername(),user.getPassword(),user.getEmail()});
     }
 
 
@@ -36,7 +36,7 @@ public class IUserDaoImpl extends BaseDao implements IUserDao {
     public List<User> findByUserName(String username) throws Exception {
         String sql="select * from msg_userinfo where username = ?";
         ResultSet resultSet = null;
-            resultSet = super.query(sql,username);
+            resultSet = super.query(sql,new Object[]{username});
         List<User> users = new ArrayList<User>();
         while (resultSet.next()){
             users.add(this.getInfo(resultSet));
@@ -50,7 +50,7 @@ public class IUserDaoImpl extends BaseDao implements IUserDao {
         String sql="select * from msg_userinfo where username = ? and password = ?";
         User user=null;
         try {
-            ResultSet resultSet = super.query(sql, username, password);
+            ResultSet resultSet = super.query(sql, new Object[]{username, password});
             if (resultSet.next()){
                 user=this.getInfo(resultSet);
             }
@@ -66,7 +66,7 @@ public class IUserDaoImpl extends BaseDao implements IUserDao {
         String sql="select * from msg_userinfo";
         List<User> users=new ArrayList<User>();
         try {
-            ResultSet resultSet = super.query(sql);
+            ResultSet resultSet = super.query(sql,null);
             while (resultSet.next()){
                 User user = this.getInfo(resultSet);
                 users.add(user);

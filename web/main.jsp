@@ -10,6 +10,12 @@
             <span><a href="userServlet?action=findUsers">发短消息</a></span>
             <span><a href="userServlet?action=logout">退出</a></span>
         </div>
+        <form action="msgServlet?action=selectMsg" method="post">
+            标题：<input type="text" name="title">
+            内容：<input type="text" name="msgcontent">
+            创建时间：<input type="date" name="startDate"> 到 <input type="date" name="endDate">
+            <input type="submit" value="查询">
+        </form>
         <div id="error">${error}</div>
         <c:remove var="error"></c:remove>
         <div class="content messageList">

@@ -28,4 +28,6 @@ public interface IMsgDao {
     void updateStateByMsgId(String msgid) throws Exception;
 
     Msg readMsg(String msgid) throws Exception;
+
+    List<Msg> findMsgByCondition(String title,String msgcontent,String startDate,String endDate) throws Exception;
 }

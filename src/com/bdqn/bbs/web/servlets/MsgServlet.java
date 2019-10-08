@@ -37,11 +37,28 @@ public class MsgServlet extends HttpServlet {
         } else if ("del".equals(action)) {
             this.del(request, response);
         } else if ("findMsgs".equals(action)) {
-            this.findAllMsgs(request, response);
+            this.select(request, response);
         }else if ("read".equals(action)){
             this.read(request,response);
+        }else if("selectMsg".equals(action)){
+            this.select(request,response);
         }
 
+    }
+
+    private void select(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String title = request.getParameter("title");
+        String msgcontent = request.getParameter("msgcontent");
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
+        try {
+            List<Msg> msgs = service.findMsg(title, msgcontent, startDate, endDate);
+            request.setAttribute("msgs",msgs);
+            request.getRequestDispatcher("main.jsp").forward(request,response);
+        } catch (Exception e) {
+            request.getSession().setAttribute("error",e.getMessage());
+            response.sendRedirect("msgServlet?action=findMsgs");
+        }
     }
 
     private void read(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
