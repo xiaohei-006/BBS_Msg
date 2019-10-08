@@ -102,7 +102,7 @@ public class MsgServlet extends HttpServlet {
         msg.setSendto(request.getParameter("toUser"));
         msg.setMsgcontent(request.getParameter("content"));
         msg.setMsg_create_date(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
-        msg.setState("1");
+        msg.setState("0");
         User loginUser = (User) request.getSession().getAttribute("loginuser");
         msg.setUsername(loginUser.getUsername());
         String flag = "";

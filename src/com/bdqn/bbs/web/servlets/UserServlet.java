@@ -77,7 +77,7 @@ public class UserServlet extends HttpServlet {
 
     private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
-        session.removeAttribute("00");
+        session.removeAttribute("loginuser");
         response.sendRedirect("index.jsp");
     }
 
